@@ -1,0 +1,12 @@
+{
+  "server": "145.223.75.189",
+  "port": 1433,
+  "user": "sa",
+  "password": "D3v3l0p3r2024$",
+  "database": "mobilpos",
+  "authentication": "sql",
+  "options": {
+    "encrypt": false,
+    "port": 1433
+  }
+}
