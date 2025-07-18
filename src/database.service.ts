@@ -18,8 +18,6 @@ export class DatabaseService {
         WHERE TABLE_TYPE = 'BASE TABLE'
       `;
       const result = await this.dataSource.query(query);
-      console.log(result);
-      console.log(result.map(row => row.TABLE_NAME));
 
       return result.map(row => row.TABLE_NAME);
     } catch (error) {

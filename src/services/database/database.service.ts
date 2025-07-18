@@ -44,8 +44,6 @@ export class DatabaseService {
         `;
 
         const result = await this.sqlQueryService.executeQuery(query);
-        console.log(result);
-        console.log(result.map(row => row));
 
         return {
             mensaje: 'Se listo correctamente las tablas desde la vista',

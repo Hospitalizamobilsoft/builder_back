@@ -64,16 +64,12 @@ export class FormsService {
             const pool = conn;
             const result = await pool.request();
     
-            console.log("createFormDTO",createFormDTO)
-            console.log("createFormDTO.fields",createFormDTO.fields)
-            // Parámetros principales del formulario
             result.input('Id', sql.Int, createFormDTO.id);
             result.input('FormName', sql.VarChar(255), createFormDTO.form_name);
             result.input('FormDescription', sql.VarChar(sql.MAX), createFormDTO.form_description || null);
             result.input('Data_json', sql.VarChar(sql.MAX), createFormDTO.dataJson || null);
             result.input('Table_name', sql.VarChar(255), createFormDTO.table_name || null);
     
-            // Crear TVP para los campos del formulario
             const tvpFields = new sql.Table();
             tvpFields.columns.add('field_internal_id', sql.VarChar(50));
             tvpFields.columns.add('column_name', sql.VarChar(255));
@@ -167,7 +163,7 @@ export class FormsService {
             result.input('table_name', sql.VarChar(255), insertDataDTO.table_name);
             result.input('idRow', sql.Int, insertDataDTO.idRow);
             // result.input('json_data', sql.VarChar(sql.MAX), JSON.stringify(insertDataDTO.json_data));
-            console.log("JSON.stringify([insertDataDTO.json_data])", JSON.stringify([insertDataDTO.json_data]));
+           
             result.input('json_data', sql.VarChar(sql.MAX), JSON.stringify([insertDataDTO.json_data]));
             result.input('accion', sql.VarChar(50), 'guardar');
 
@@ -191,7 +187,6 @@ export class FormsService {
     }
 
     async getDataFromTable(table_name: string) {
-        console.log("table_name", table_name);
         try {
             const conn = await conexion.getConnection('forms');
             const pool = conn;
@@ -221,7 +216,6 @@ export class FormsService {
     }
 
     async deleteData(insertDataDTO: InsertDataDTO) {
-        console.log("insertDataDTO", insertDataDTO);
         try {
             const conn = await conexion.getConnection('forms');
             const pool = conn;
